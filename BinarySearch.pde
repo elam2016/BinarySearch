@@ -32,7 +32,15 @@ public int binarySearch(int catNumToFind)
 }
 public int binarySearch(int catNumToFind,int nLow, int nHigh)
 {
-    //complete this method    
+    if(low > high)
+        return -1;
+    int guess = (low + high)/2;
+    if(a[guess] > target){
+        return recursiveBinarySearch(a, target, low, guess-1);
+    } else if(a[guess] < target){
+        return recursiveBinarySearch(a, target, guess+1, high);
+    } else
+        return guess;
     return -1;           
 }
 public void setup()
