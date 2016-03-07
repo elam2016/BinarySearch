@@ -22,23 +22,38 @@ private Item[] store = {new Item(184,14),
 };                             
 public int linearSearch(int catNumToFind)
 {
-    //complete this method
+    int startIndex = 0;
+    if(catNumToFind == Item[startIndex])
+        return startIndex;
+    else
+        return linearSearch(Item, catNumToFind, startIndex+1);
     return -1;
 }
 public int binarySearch(int catNumToFind)
 {
-    //complete this method    
+    int low = 0;
+    int high = Item.length-1;
+    while(low <= high){
+        int guess = (low + high)/2;
+        if(Item[guess] == catNumToFind)
+            return guess;
+        else if(catNumToFind < Item[guess])
+            high = guess - 1;
+        else
+            low = guess + 1;
+    }
+  return -1;  
     return -1;    
 }
 public int binarySearch(int catNumToFind,int nLow, int nHigh)
 {
-    if(low > high)
+    if(nLow > nHigh)
         return -1;
-    int guess = (low + high)/2;
-    if(a[guess] > target){
-        return recursiveBinarySearch(a, target, low, guess-1);
-    } else if(a[guess] < target){
-        return recursiveBinarySearch(a, target, guess+1, high);
+    int guess = (nLow + nHigh)/2;
+    if(Item[guess] > catNumToFind){
+        return binarySearch(Item, catNumToFind, nLow, guess-1);
+    } else if(Item[guess] < catNumToFind){
+        return binarySearch(Item, catNumToFind, guess+1, nHigh);
     } else
         return guess;
     return -1;           
@@ -86,8 +101,3 @@ public void draw()
 {
     //empty!
 }
-
-
-
-
-
