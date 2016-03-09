@@ -28,29 +28,29 @@ public int linearSearch(int catNumToFind){
     return -1;
 }
 public int binarySearch(int catNumToFind){
-    /*int low = 0;
+    int low = 0;
     int high = store.length-1;
     while(low <= high){
         int guess = (low + high)/2;
-        if(store[guess] == catNumToFind)
-            return guess;
-        else if(catNumToFind < store[guess])
+        if(store[guess].getCatNum() == catNumToFind)
+            return store[guess].getInventory();
+        else if(store[guess].getCatNum() > catNumToFind)
             high = guess - 1;
         else
             low = guess + 1;
-    }*/
+    }
     return -1;    
 }
 public int binarySearch(int catNumToFind,int nLow, int nHigh){
-    /*if(nLow > nHigh)
+    if(nLow > nHigh)
         return -1;
     int guess = (nLow + nHigh)/2;
-    if(store[guess] > catNumToFind){
-        return binarySearch(store, catNumToFind, nLow, guess-1);
-    } else if(store[guess] < catNumToFind){
-        return binarySearch(store, catNumToFind, guess+1, nHigh);
-    } else
-        return guess;*/
+    if(store[guess].getCatNum() > catNumToFind){
+        return binarySearch(catNumToFind, nLow, guess-1);
+    } else if(store[guess].getCatNum() < catNumToFind){
+        return binarySearch(catNumToFind, guess+1, nHigh);
+    } else if(store[guess].getCatNum() == catNumToFind)
+        return store[guess].getInventory();
     return -1;           
 }
 public void setup(){
